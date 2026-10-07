@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Task List Colors for Google Calendar",
+  "short_name": "Task List Colors",
+  "version": "1.0.0",
+  "description": "Color Google Tasks in Google Calendar by task list, and show or hide individual lists under My calendars.",
+  "minimum_chrome_version": "116",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxV4ir/jm5pYBI88RLPnPm3cEcX4JxToYqDaED6jp2KPM1t9gaFCx19XgybNfnXRjkILVpcMprGWadBRMUzh7VcmAmcVO/U2J911RkKb70ZFA8S8OUTU7fZyGnQ2H6F2WgQHUoYbPw81u3oN3Bu30WQO4BJDZsxdsmkvIiGjXxFPnJYaJr9b7pfqCujUkGSRAA5/hM8RXj/UwltbLtxOlUZSzHkFKbzihVxwUzb/MTsG4ou7eG/8LRhysD3xohwywpIRgKPOKnUIBhXY5TZr8aryF+sfuVpRp2L17hSr9HZ2mOATdZcWY1iZu4emdyiBZm1iCk52yjJ6SiSMAww/ICwIDAQAB",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://tasks.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_title": "Task List Colors",
+    "default_popup": "src/options/options.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://calendar.google.com/*"
+      ],
+      "js": [
+        "src/content/core.js",
+        "src/content/store.js",
+        "src/content/chips.js",
+        "src/content/menu.js",
+        "src/content/sidebar.js",
+        "src/content/main.js"
+      ],
+      "css": [
+        "src/content/content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+/*
+ * Task List Colors for Google Calendar.
+ * Colors come from Calendar's own Material 3 tokens (--gm3-sys-color-*), so
+ * everything follows Calendar's light and dark themes. Fallbacks are the
+ * light-theme values.
+ */
+
+/* Tasks from hidden lists */
+[data-tlc-hidden] {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------- sidebar */
+
+.tlc-lists {
+  --tlc-label-inset: 52px;
+  font-family: inherit;
+}
+
+.tlc-lists--nested .tlc-row {
+  padding-left: 16px;
+}
+
+.tlc-lists--muted .tlc-row {
+  opacity: 0.6;
+}
+
+.tlc-row--menu-open .tlc-row__inner {
+  background-color: var(--gm3-sys-color-surface-container-high, #e9eef6);
+}
+
+.tlc-row--menu-open .tlc-row__actions {
+  display: flex !important;
+  width: auto !important;
+  overflow: visible !important;
+}
+
+.tlc-caption {
+  margin: 8px 0 2px;
+  padding-left: var(--tlc-label-inset);
+  color: var(--gm3-sys-color-on-surface-variant, #444746);
+  font: 500 12px/16px "Google Sans Text", "Google Sans", Roboto, Arial, sans-serif;
+  letter-spacing: 0.1px;
+}
+
+.tlc-notice {
+  padding: 2px 16px 6px var(--tlc-label-inset);
+  list-style: none;
+}
+
+.tlc-lists--nested .tlc-notice {
+  padding-left: calc(var(--tlc-label-inset) + 16px);
+}
+
+.tlc-notice__text {
+  color: var(--gm3-sys-color-on-surface-variant, #444746);
+  font: 400 12px/16px "Google Sans Text", "Google Sans", Roboto, Arial, sans-serif;
+  letter-spacing: 0.1px;
+  overflow-wrap: anywhere;
+}
+
+.tlc-text-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  margin: 2px 0 0 -12px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  color: var(--gm3-sys-color-primary, #0b57d0);
+  font: 500 14px/20px "Google Sans", "Google Sans Text", Roboto, Arial, sans-serif;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.1s linear;
+}
+
+.tlc-text-btn:hover {
+  background-color: color-mix(in srgb, var(--gm3-sys-color-primary, #0b57d0) 8%, transparent);
+}
+
+.tlc-text-btn:active,
+.tlc-text-btn:focus-visible {
+  background-color: color-mix(in srgb, var(--gm3-sys-color-primary, #0b57d0) 12%, transparent);
+}
+
+.tlc-text-btn:focus-visible {
+  outline: 2px solid var(--gm3-sys-color-primary, #0b57d0);
+  outline-offset: 1px;
+}
+
+.tlc-text-btn:disabled {
+  color: color-mix(in srgb, var(--gm3-sys-color-on-surface, #1f1f1f) 38%, transparent);
+  background: transparent;
+  cursor: default;
+}
+
+/* ------------------------------------------------------------------- menu */
+
+.tlc-menu {
+  position: fixed;
+  z-index: 5006;
+  min-width: 170px;
+  box-sizing: border-box;
+  padding: 0;
+  border-radius: 4px;
+  background-color: var(--gm3-sys-color-surface-container, #f0f4f9);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+  color: var(--gm3-sys-color-on-surface, #1f1f1f);
+  font: 400 14px/20px "Google Sans Text", "Google Sans", Roboto, Arial, sans-serif;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.12s cubic-bezier(0.2, 0, 0, 1), transform 0.12s cubic-bezier(0.2, 0, 0, 1);
+  user-select: none;
+}
+
+.tlc-menu--open {
+  opacity: 1;
+  transform: none;
+}
+
+.tlc-menu__item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  border-radius: 8px;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+
+.tlc-menu__item:hover {
+  background-color: color-mix(in srgb, var(--gm3-sys-color-on-surface, #1f1f1f) 8%, transparent);
+}
+
+.tlc-menu__item:focus-visible,
+.tlc-menu__item:active {
+  background-color: color-mix(in srgb, var(--gm3-sys-color-on-surface, #1f1f1f) 12%, transparent);
+}
+
+.tlc-menu__divider {
+  height: 1px;
+  background-color: var(--gm3-sys-color-surface-variant, var(--gm3-sys-color-outline-variant, #e1e3e1));
+}
+
+.tlc-swatches {
+  width: 144px;
+  padding: 13px;
+}
+
+.tlc-swatch-row {
+  display: flex;
+  height: 24px;
+}
+
+.tlc-swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 3px;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.08s linear;
+}
+
+.tlc-swatch:hover {
+  transform: scale(1.12);
+}
+
+.tlc-swatch:focus-visible {
+  box-shadow: 0 0 0 2px var(--gm3-sys-color-surface-container, #f0f4f9), 0 0 0 4px var(--gm3-sys-color-primary, #0b57d0);
+}
+
+.tlc-swatch svg {
+  opacity: 0;
+}
+
+.tlc-swatch[aria-checked="true"] svg,
+.tlc-swatch--add svg {
+  opacity: 1;
+}
+
+.tlc-swatch--add {
+  background-color: var(--gm3-sys-color-outline-variant, #c4c7c5);
+  color: var(--gm3-sys-color-on-surface-variant, #444746);
+}
+
+.tlc-color-input {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------- tooltip */
+
+.tlc-tooltip {
+  position: fixed;
+  z-index: 5010;
+  max-width: 280px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: var(--gm3-sys-color-inverse-surface, #303030);
+  color: var(--gm3-sys-color-inverse-on-surface, #f2f2f2);
+  font: 400 12px/16px "Google Sans Text", "Google Sans", Roboto, Arial, sans-serif;
+  letter-spacing: 0.1px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s linear;
+}
+
+.tlc-tooltip--visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tlc-menu,
+  .tlc-swatch,
+  .tlc-tooltip,
+  .tlc-text-btn {
+    transition: none;
+  }
+}

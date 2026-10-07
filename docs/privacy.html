@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy · Task List Colors</title>
+  <meta name="description" content="Privacy policy for the Task List Colors browser extension for Google Calendar.">
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="icon.png" alt="" width="28" height="28">Task List Colors</a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="./">Home</a>
+        <a href="https://github.com/Psychemm/TaskPlus">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap policy">
+    <h1>Privacy Policy</h1>
+    <p class="muted">Effective October 7, 2026</p>
+
+    <p>
+      Task List Colors ("the extension") is a browser extension that colors Google Tasks in Google Calendar by task
+      list and lets you show or hide individual lists. This policy explains what data the extension accesses, how
+      it's used, and where it's stored.
+    </p>
+
+    <div class="callout">
+      <strong>In short:</strong> the extension has read-only access to your Google Tasks. It uses that access only to
+      color your tasks in Google Calendar. Your data stays in your browser. The developer never receives it, and it is
+      never sold or shared.
+    </div>
+
+    <h2>Data the extension accesses</h2>
+    <h3>Google user data (through Google APIs, with your permission)</h3>
+    <ul>
+      <li>
+        <strong>Google Tasks</strong> (<code>https://www.googleapis.com/auth/tasks.readonly</code>, read-only): the IDs
+        and names of your task lists, and for each task its ID, title, due date, completion status and web link.
+        This is used only to work out which list each task shown in Google Calendar belongs to, so it can be shown
+        in that list's color.
+      </li>
+      <li>
+        <strong>Your email address</strong> (<code>https://www.googleapis.com/auth/userinfo.email</code>): used only
+        to remember which Google account is connected and to pre-select that account when you reconnect.
+      </li>
+    </ul>
+    <p>The extension cannot create, change or delete your tasks.</p>
+
+    <h3>Other data</h3>
+    <ul>
+      <li>
+        <strong>Google Calendar page content:</strong> while you use Google Calendar, the extension reads the page in
+        your browser to find tasks (their IDs, titles and dates) and the list name shown in a task's details popup.
+        This is processed on your device and never sent anywhere.
+      </li>
+      <li>
+        <strong>Your settings:</strong> the colors you choose, which lists are hidden, and the OAuth client ID you enter
+        during setup.
+      </li>
+    </ul>
+
+    <h2>How data is stored</h2>
+    <ul>
+      <li>
+        <strong>Task-to-list index and connection status:</strong> stored locally on your device in the extension's
+        browser storage (<code>chrome.storage.local</code>).
+      </li>
+      <li>
+        <strong>Settings:</strong> stored in <code>chrome.storage.sync</code>. If you use browser sync, your browser
+        syncs these across your devices.
+      </li>
+      <li>
+        <strong>Access token:</strong> kept only in memory (<code>chrome.storage.session</code>). It is never written
+        to disk, expires within an hour, and is cleared when the browser closes.
+      </li>
+    </ul>
+
+    <h2>How data is shared</h2>
+    <p>
+      The extension does not sell, rent, transfer or share your data with anyone. It has no server, analytics,
+      advertising or third-party code. Its only network requests go directly from your browser to Google:
+      <code>accounts.google.com</code> and <code>oauth2.googleapis.com</code> to sign in, and
+      <code>tasks.googleapis.com</code> to read your task lists. The developer never receives any of your data.
+    </p>
+
+    <h2>Limited Use</h2>
+    <p>
+      Task List Colors' use and transfer of information received from Google APIs adheres to the
+      <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
+      including the Limited Use requirements. Google user data is used only to provide the extension's user-facing
+      feature of coloring tasks by list. It is not used for advertising, is not transferred to others, and is not read
+      by humans.
+    </p>
+
+    <h2>Keeping and deleting your data</h2>
+    <ul>
+      <li>Click <strong>Disconnect</strong> in the extension's popup to delete the stored task index and revoke the access token.</li>
+      <li>Removing the extension deletes everything it stored.</li>
+      <li>You can also revoke access at any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>The extension is not directed to children under 13.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the updated version will be posted on this page with a new effective date.</p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions or concerns? Open an issue at
+      <a href="https://github.com/Psychemm/TaskPlus/issues">github.com/Psychemm/TaskPlus/issues</a>.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><a href="./">Home</a> · <a href="https://github.com/Psychemm/TaskPlus">Source code</a></p>
+      <p>Task List Colors is an independent project and is not affiliated with or endorsed by Google. Google Calendar and Google Tasks are trademarks of Google LLC.</p>
+    </div>
+  </footer>
+</body>
+</html>

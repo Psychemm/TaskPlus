@@ -1,0 +1,15 @@
+# Private signing keys (only needed to pack a .crx; never commit them)
+*.pem
+
+# Build output
+*.zip
+*.crx
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+node_modules/

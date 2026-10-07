@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task List Colors for Google Calendar</title>
+  <meta name="description" content="A browser extension that colors Google Tasks in Google Calendar by task list, and lets you show or hide each list from My calendars.">
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="icon.png" alt="" width="28" height="28">Task List Colors</a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="privacy.html">Privacy</a>
+        <a href="https://github.com/Psychemm/TaskPlus">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Your task lists, in color.</h1>
+      <p class="lede">
+        Task List Colors is a free browser extension for Google Calendar. It colors every Google Task by the list it
+        belongs to, and lets you show or hide individual task lists from <em>My calendars</em>, just like calendars.
+      </p>
+      <div class="buttons">
+        <a class="btn btn--filled" href="https://github.com/Psychemm/TaskPlus#install">Install from GitHub</a>
+        <a class="btn btn--tonal" href="privacy.html">Privacy policy</a>
+      </div>
+
+      <div class="preview" role="img" aria-label="Illustration: task lists with colored checkboxes under My calendars, next to calendar days with tasks colored by list">
+        <div class="preview__side" aria-hidden="true">
+          <h2>My calendars</h2>
+          <div class="cal-row"><span class="box" style="--c:#1A79B2"></span>Personal</div>
+          <div class="cal-row"><span class="box" style="--c:#4285F4"></span>Tasks</div>
+          <div class="cal-row cal-row--sub"><span class="box" style="--c:#4285F4"></span>My Tasks</div>
+          <div class="cal-row cal-row--sub"><span class="box" style="--c:#D50000"></span>High Priority</div>
+          <div class="cal-row cal-row--sub"><span class="box" style="--c:#0B8043"></span>School</div>
+          <div class="cal-row cal-row--sub"><span class="box box--off" style="--c:#F6BF26"></span>Someday</div>
+        </div>
+        <div class="preview__grid" aria-hidden="true">
+          <div class="day">
+            <div class="day__label">Mon</div>
+            <div class="chip" style="--c:#D50000">Submit report</div>
+            <div class="chip" style="--c:#4285F4">Groceries</div>
+          </div>
+          <div class="day">
+            <div class="day__label">Tue</div>
+            <div class="chip" style="--c:#0B8043">Essay draft</div>
+          </div>
+          <div class="day">
+            <div class="day__label">Wed</div>
+            <div class="chip" style="--c:#D50000">Call bank</div>
+            <div class="chip" style="--c:#0B8043">Study group</div>
+            <div class="chip" style="--c:#4285F4">Laundry</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="features">
+      <h2 id="features">What it does</h2>
+      <ul class="features">
+        <li><strong>A color for every list</strong><span>Tasks take their list's color in Day, Week, Month and Schedule views, and in the task details popup.</span></li>
+        <li><strong>Show or hide lists</strong><span>Each task list gets its own checkbox under My calendars, right below Tasks.</span></li>
+        <li><strong>Calendar's own palette</strong><span>Pick from the same 24 colors Calendar uses, or any custom color.</span></li>
+        <li><strong>Feels built in</strong><span>Rows and menus match Google Calendar's design, in light and dark themes.</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="how">
+      <h2 id="how">How it works</h2>
+      <p>
+        Google Calendar's page doesn't say which list a task belongs to. With your permission, Task List Colors reads
+        your task lists from the official Google Tasks API using <strong>read-only</strong> access, then colors the tasks
+        on your calendar to match.
+      </p>
+      <p>
+        Everything runs in your browser. There is no Task List Colors server: requests go directly from your browser to
+        Google, and your task data stays on your device. Read the <a href="privacy.html">privacy policy</a> for details.
+      </p>
+      <h3>Get started</h3>
+      <p class="muted">
+        Install the extension and follow the one-time setup in the
+        <a href="https://github.com/Psychemm/TaskPlus#readme">README on GitHub</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><a href="privacy.html">Privacy policy</a> · <a href="https://github.com/Psychemm/TaskPlus">Source code</a></p>
+      <p>Task List Colors is an independent project and is not affiliated with or endorsed by Google. Google Calendar and Google Tasks are trademarks of Google LLC.</p>
+    </div>
+  </footer>
+</body>
+</html>

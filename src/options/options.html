@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task List Colors</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <img class="header__icon" src="../../icons/icon48.png" alt="" width="32" height="32">
+      <div>
+        <h1 class="header__title">Task List Colors</h1>
+        <p class="header__subtitle">for Google Calendar</p>
+      </div>
+    </header>
+
+    <section class="card" id="status-card" aria-live="polite">
+      <div class="status">
+        <span class="status__dot" id="status-dot"></span>
+        <div class="status__body">
+          <div class="status__title" id="status-title">Loading…</div>
+          <div class="status__detail" id="status-detail"></div>
+        </div>
+      </div>
+      <div class="actions" id="status-actions">
+        <button type="button" class="btn btn--filled" id="connect" hidden>Connect Google Tasks</button>
+        <button type="button" class="btn btn--text" id="refresh" hidden>Refresh now</button>
+        <button type="button" class="btn btn--text" id="disconnect" hidden>Disconnect</button>
+      </div>
+      <p class="hint" id="usage-hint" hidden>
+        To change colors or hide lists, open Google Calendar and use the task lists listed under
+        <strong>My calendars</strong>. Hover a list and click <strong>⋮</strong> to pick its color.
+      </p>
+    </section>
+
+    <section class="card">
+      <details id="setup" class="setup">
+        <summary class="setup__summary">
+          <span>Google Cloud setup</span>
+          <span class="setup__state" id="setup-state"></span>
+        </summary>
+
+        <p class="setup__intro">
+          Google Calendar's page doesn't say which list a task belongs to, so this extension reads it from the
+          Google Tasks API (read-only). The API requires your own free OAuth client. You only need to set this up once.
+        </p>
+
+        <ol class="steps">
+          <li>
+            Open the <a href="https://console.cloud.google.com/projectcreate" target="_blank" rel="noopener">Google Cloud console</a>
+            and create a project (any name).
+          </li>
+          <li>
+            Enable the <a href="https://console.cloud.google.com/apis/library/tasks.googleapis.com" target="_blank" rel="noopener">Google Tasks API</a>
+            for that project.
+          </li>
+          <li>
+            Open <a href="https://console.cloud.google.com/auth/overview" target="_blank" rel="noopener">Google Auth Platform</a>,
+            click <em>Get started</em>, and choose <em>External</em> for the audience. On the <em>Audience</em> page,
+            either add your Google account under <em>Test users</em> or click <em>Publish app</em>.
+            Published apps don't make you reconnect every 7 days.
+          </li>
+          <li>
+            Go to <a href="https://console.cloud.google.com/auth/clients" target="_blank" rel="noopener">Clients</a> →
+            <em>Create client</em> → application type <em>Web application</em>. Under <em>Authorized redirect URIs</em>, add:
+            <div class="copy-field">
+              <code id="redirect-uri">…</code>
+              <button type="button" class="btn btn--text btn--small" id="copy-redirect">Copy</button>
+            </div>
+          </li>
+          <li>Click <em>Create</em>, copy the <em>Client ID</em>, and paste it here:</li>
+        </ol>
+
+        <form class="client-form" id="client-form">
+          <label class="field">
+            <span class="field__label">OAuth client ID</span>
+            <input class="field__input" id="client-id" type="text" spellcheck="false" autocomplete="off"
+                   placeholder="1234567890-abc123.apps.googleusercontent.com">
+          </label>
+          <button type="submit" class="btn btn--filled" id="save-client">Save</button>
+        </form>
+        <p class="field__error" id="client-error" hidden></p>
+      </details>
+    </section>
+
+    <p class="footer">
+      Read-only access. Task data stays in this browser and is only used to match tasks to their lists.
+    </p>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>
