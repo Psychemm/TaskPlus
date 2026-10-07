@@ -23,7 +23,8 @@
     const now = Date.now();
     if (now - (lastRefresh[reason] || 0) < minGap) return;
     lastRefresh[reason] = now;
-    if (TLC.store.configured) TLC.send({ type: 'refresh', account: TLC.pageAccount() });
+    // Sent even before setup: the background may find a client ID in config.json.
+    TLC.send({ type: 'refresh', account: TLC.pageAccount() });
   }
 
   function currentBase() {

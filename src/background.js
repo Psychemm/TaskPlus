@@ -13,10 +13,30 @@ const KEY = {
   status: 'tlc:status', // local
   data: 'tlc:data', // local
   account: 'tlc:account', // local
+  bundled: 'tlc:bundledClientId', // local: last client ID taken from config.json
   token: 'tlc:token', // session
 };
 
 class AuthRequiredError extends Error {}
+
+// tools/set-client-id.ps1 saves the client ID to config.json in the extension
+// folder. Adopt it whenever that file changes; an ID entered on the options
+// page still wins until config.json is edited again.
+async function applyBundledClientId() {
+  let clientId = '';
+  try {
+    const res = await fetch(chrome.runtime.getURL('config.json'), { cache: 'no-store' });
+    if (!res.ok) return;
+    clientId = String((await res.json()).clientId || '').trim();
+  } catch {
+    return; // no config.json
+  }
+  if (!clientId) return;
+  const { [KEY.bundled]: applied } = await chrome.storage.local.get(KEY.bundled);
+  if (applied === clientId) return;
+  await chrome.storage.local.set({ [KEY.bundled]: clientId });
+  await chrome.storage.sync.set({ [KEY.clientId]: clientId });
+}
 
 // ---------------------------------------------------------------------------
 // OAuth (implicit grant through chrome.identity.launchWebAuthFlow). This works
@@ -203,6 +223,7 @@ function refresh(opts = {}) {
 }
 
 async function doRefresh({ interactive = false, loginHint } = {}) {
+  await applyBundledClientId();
   const { [KEY.clientId]: clientId } = await chrome.storage.sync.get(KEY.clientId);
   if (!clientId) {
     await setStatus({ state: 'setup' });
@@ -283,6 +304,7 @@ const handlers = {
   disconnect: () => disconnect(),
   openOptions: () => chrome.runtime.openOptionsPage(),
   redirectUri: () => ({ uri: chrome.identity.getRedirectURL() }),
+  syncConfig: () => applyBundledClientId(),
 };
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
@@ -305,9 +327,10 @@ chrome.storage.onChanged.addListener((changes, area) => {
 });
 
 chrome.runtime.onInstalled.addListener(async ({ reason }) => {
+  await applyBundledClientId();
   const { [KEY.clientId]: clientId } = await chrome.storage.sync.get(KEY.clientId);
-  if (!clientId) {
-    await setStatus({ state: 'setup' });
-    if (reason === 'install') chrome.runtime.openOptionsPage();
-  }
+  if (!clientId) await setStatus({ state: 'setup' });
+  if (reason === 'install') chrome.runtime.openOptionsPage();
 });
+
+applyBundledClientId();

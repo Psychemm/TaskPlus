@@ -97,6 +97,8 @@ function render() {
 }
 
 async function load() {
+  // Pick up a client ID saved by tools/set-client-id.ps1.
+  await chrome.runtime.sendMessage({ type: 'syncConfig' }).catch(() => {});
   const [sync, local] = await Promise.all([
     chrome.storage.sync.get(KEY.clientId),
     chrome.storage.local.get([KEY.status, KEY.data]),

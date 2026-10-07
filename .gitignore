@@ -13,3 +13,6 @@ desktop.ini
 .idea/
 
 node_modules/
+
+# Local OAuth client ID written by tools/set-client-id.ps1
+config.json

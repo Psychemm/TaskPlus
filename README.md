@@ -43,7 +43,8 @@ Calendar's web page doesn't say which list a task belongs to. The extension gets
      ```
 
    - Click **Create** and copy the **Client ID** (it ends in `.apps.googleusercontent.com`).
-5. **Connect.** Click the extension's toolbar icon, open **Google Cloud setup**, paste the client ID, and click **Save**. Then click **Connect Google Tasks** in the popup, or **Connect** under *My calendars* in Calendar. Pick the same Google account you use in Calendar.
+5. **Connect.** Click the extension's toolbar icon, open **Google Cloud setup**, paste the client ID, and click **Save**.
+   On Windows you can instead run `powershell -STA -ExecutionPolicy Bypass -File tools\set-client-id.ps1`, paste it into the dialog, and click **Save**. That writes a git-ignored `config.json` that the extension reads automatically. Then click **Connect Google Tasks** in the popup, or **Connect** under *My calendars* in Calendar. Pick the same Google account you use in Calendar.
 
 ## Using it
 
