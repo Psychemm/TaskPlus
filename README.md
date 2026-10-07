@@ -30,6 +30,7 @@ Calendar's web page doesn't say which list a task belongs to. The extension gets
        Publishing requires a home page and privacy policy on the **Branding** page. You can use this project's site:
        - Application home page: `https://psychemm.github.io/TaskPlus/`
        - Application privacy policy link: `https://psychemm.github.io/TaskPlus/privacy.html`
+       - Application terms of service link: `https://psychemm.github.io/TaskPlus/terms.html`
        - Authorized domains: `psychemm.github.io`
        - Leave the logo empty. Uploading one sends the app to Google's verification review.
      - Or stay in **Testing** and add your Google account under **Test users**. Testing-mode sign-ins expire after 7 days, so you'll click **Reconnect** in Calendar about once a week.
